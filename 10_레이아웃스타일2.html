@@ -3,31 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <style>
-        /* 부모 컴포넌트 기준으로 떨어진걸 적용하려면 
-            부모 - relative, 자식 - absolute */
         .outer {
             border: 1px solid red;
-            width: 300px;
-            height: 300px;
+            width: 500px;
+            height: 500px;
             position: relative;
         }
 
         .first {
-            width: 500px;
-            height: 500px;
+            width: 300px;
+            height: 300px;
             background-color: yellow;
             top: 0px;
             left: 0px;
-            position: absolute; /* 왼쪽 상단 기준으로 */
+            position: absolute;
         }
 
         .second {
-            width: 300px;
-            height: 300px;
+            width: 200px;
+            height: 200px;
             background-color: yellowgreen;
-            top: 50px;  /* 좌상단 기준으로 50px 떨어진 지점 */
+            top: 50px;
             left: 50px;
             position: absolute;
         }
@@ -35,7 +32,7 @@
         .third {
             width: 100px;
             height: 100px;
-            background-color: #32b6d1;
+            background-color: red;
             top: 100px;
             left: 100px;
             position: absolute;
@@ -44,46 +41,57 @@
         .vis-test {
             width: 100px;
             height: 100px;
-            border: 1px solid blueviolet;
+            border: 1px solid black;
         }
 
         .vis-test1 {
             background: red;
         }
-        /* visibility는 존재하지만 안보이게, display: none 은 존재 자체가 x */
+
+        /* visibility는 존재하지만 안보이게, display:none은 존재 자체가 X */
         .vis-test2 {
             background: yellow;
             visibility: hidden;
+            visibility: visible;
             /* display: none; */
         }
+
         .vis-test3 {
             background: green;
         }
 
+        .wrap {
+            position: relative;
+        }
+
         .z-test {
+            width: 150px;
+            height: 100px;
+            border: 1px solid black;
+        }
+
+        .z-test1 {
             background: yellow;
             position: absolute;
             top: 100px;
             left: 100px;
             z-index: 3;
         }
-        .z-test1 {
+        .z-test2 {
             background: red;
             position: absolute;
             top: 50px;
             left: 50px;
             z-index: 2;
         }
-        .z-test2 {
+        .z-test3 {
             background: green;
             position: absolute;
             top: 0px;
             left: 0px;
             z-index: 1;
         }
-
     </style>
-
     <title>Document</title>
 </head>
 <body>
