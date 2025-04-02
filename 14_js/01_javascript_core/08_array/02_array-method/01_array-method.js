@@ -30,9 +30,9 @@ console.log(`chickenList.shift(): ${chickenList.shift()}`);
 console.log(`shift 후: ${chickenList}`);
 
 /* concat */
-const idol1 = ['서태지와 아이들', '소녀시대'];
-const idol2 = ['HOT', '젝스키스'];
-const idol3 = ['핑클', '블랙핑크'];
+const idol1 = ['엔시티위시', '라이즈'];
+const idol2 = ['엔하이픈', '제베원'];
+const idol3 = ['베몬', '에스파'];
 
 console.log(`idol1을 기준으로 idol2 배열을 concat: ${idol1.concat(idol2)}`);
 
