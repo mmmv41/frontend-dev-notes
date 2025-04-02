@@ -1,3 +1,6 @@
+/* 부모 생성자 함수 기반 상속 또는 의사 클래스 상속 */
+
+// 부모 생성자 함수
 function Parent(name) { // 부의 역할 (함수만 만들어도 prototype을 가진다)
     this.name = name;
 }
@@ -25,3 +28,30 @@ Child.prototype.sayAge = function() {
 const child = new Child('홍길동', 20);
 child.sayHello();
 child.sayAge();
+
+/* ----------------------------------------------------- */
+class Parent {
+    constructor(name) {
+        this.name = name;
+    }
+
+    sayHello() {
+        console.log(`Hello, I'm ${this.name}`);
+    }
+}
+
+class Child extends Parent {
+    constructor(name, age) {
+        super(name);
+        this.age = age;
+    }
+
+    sayAge() {
+        console.log(`I'm ${this.age} years old`);
+    }
+}
+
+const child2 = new Child('유관순', 15);
+
+child2.sayHello();
+child2.sayAge();
