@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>Document</title>
+</head>
+<body>
+
+    <!-- 
+        Attributes 
+    -->
+
+    <h3>속성 바인딩</h3>
+    <hr>
+    <div id="step01">
+        <h5>bind 구문</h5>
+        <!-- 반응형 변수에 해당한다. -->
+        <div v-bind:id="dynamicId">{{ value }}</div>
+
+        <!-- v-bind 지시자는 생략 가능 -->
+        <div :id="skipId">{{ skipValue }}</div>
+    </div>
+
+    <br>
+    
+    <div id="step02">
+        <h5>비활성화</h5>
+        <input type="text" :disabled="isTrue" :value="isTrue">
+    </div>
+
+    <script> 
+        const {createApp, ref} = Vue;
+        createApp({
+            setup() {
+                const dynamicId = ref('vue');
+                const value = ref('test');
+                const skipId = ref('skipId');
+                const skipValue = ref('skipValue')
+                return {
+                    dynamicId,
+                    value,
+                    skipId,
+                    skipValue
+                }
+            }
+        }).mount('#step01');    // vue 컴포넌트에 재료 4개 던짐(다 반응형 변수) -> div에서 활용한다. 
+
+        // setup 안에서 꺼낼 때는 .value 를 써줘야한다.
+        createApp({
+            setup() {
+                /*
+                    vue가 제공하는 reactive 함수를 써도 객체 데이터를 모델로 관리 가능(반응형 변수로 관리)
+
+                    ref와 reactive 의 차이점
+                    1. ref는 모든 자료형을 관리 가능, reactive는 객체 형태들만 관리 가능
+                        (객체를 관리할 때는 reactive가 내부적으로 속도가 더 빠르다)
+                    2. ref는 setup() 안에서 접근할 때 .value 를 붙여야함. reactive는 바로 접근 가능
+                        (template 영역에서는 둘다 .value 쓸 필요 x)
+                */
+                const isTrue = ref(false);
+
+                // refObj와 reactiveObj는 컴포넌트(view)에서 사용되는 것이 아닌 단순 함수에서 활용
+                const refObj = ref({test: 'ttt'});
+                const reactiveObj = reactive({test: 'abc'});    // 객체를 담는 용도
+                const activation = () => {
+
+                    console.log('기존 isTrue 값: ', isTrue.value);
+                    console.log('refObj: ',refObj.value.test);
+                    console.log();
+
+                    // ref로 관리되는 데이터는 setup() 안에서는 .value 써야지만 접근 가능하다. 
+                    isTrue.value = !isTrue.value;
+                }
+                return {
+                    isTrue,
+                    activation
+                }
+            }
+        }).mount('#step02')
+
+    </script>
+</body>
+</html>
