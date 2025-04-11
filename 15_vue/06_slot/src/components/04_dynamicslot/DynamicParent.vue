@@ -3,6 +3,8 @@
         <h1>DynamicSlot:</h1>
         <input type="text" v-model="dynamicName">
         <DynamicChild>
+
+            <!-- #[]는 동적 태그 이름을 사용할 때 활용한다. -->
             <template #[dynamicName]>
                     {{ dynamicName }}
             </template>
@@ -10,7 +12,12 @@
     </div>
 </template>
 
-<script setup></script>
+<script setup>
+    import DynamicChild from './DynamicChild.vue';
+    import {ref} from 'vue';
+
+    const dynamicName = ref('');
+</script>
 
 <style scoped>
 .parentContainer {

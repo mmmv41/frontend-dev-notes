@@ -1,5 +1,18 @@
 <template>
-    <div></div>
+    <div class="container">
+        <div class="north">
+            <slot name="north"></slot>
+        </div>
+        <div class="west">
+            <slot name="west"></slot>
+        </div>
+        <div class="east">
+            <slot name="east"></slot>
+        </div>
+        <div class="south">
+            <slot name="south"></slot>
+        </div>
+    </div>
 </template>
 
 <script setup></script>
